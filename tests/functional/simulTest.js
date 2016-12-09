@@ -25,26 +25,26 @@ const logger = new (winston.Logger)({
 });
 
 const requestsArr = [
-    ['put', 'PUT_RESPONSE'],
-    ['get', 'GET_RESPONSE', {}, { key, }],
-    ['put', 'PUT_RESPONSE', { newVersion, }],
-    ['getVersion', 'GETVERSION_RESPONSE'],
-    ['put', 'PUT_RESPONSE', { key: Buffer.from('key1') }],
-    ['put', 'PUT_RESPONSE', { key: Buffer.from('key2') }],
-    ['put', 'PUT_RESPONSE', { key: Buffer.from('key3') }],
-    ['put', 'PUT_RESPONSE', { key: Buffer.from('key4') }],
-    ['put', 'PUT_RESPONSE', { key: Buffer.from('key5') }],
-    ['getRange', 'GETKEYRANGE_RESPONSE'],
-    ['getNext', 'GETNEXT_RESPONSE',
-     { key: Buffer.from('key1') }, { key: Buffer.from('key2') }],
-    ['getPrevious', 'GETPREVIOUS_RESPONSE',
-     { key: Buffer.from('key1') }, { key: Buffer.from('key') }],
-    ['delete', 'DELETE_RESPONSE', { dbVersion: newVersion, }],
     ['noop', 'NOOP_RESPONSE'],
-    ['flush', 'FLUSH_RESPONSE'],
-    ['getLog', 'GETLOG_RESPONSE'],
-    ['setClusterVersion', 'SETUP_RESPONSE'],
-    ['setClusterVersionTo0', 'SETUP_RESPONSE'],
+    // ['put', 'PUT_RESPONSE'],
+    // ['get', 'GET_RESPONSE', {}, { key, }],
+    // ['put', 'PUT_RESPONSE', { newVersion, }],
+    // ['getVersion', 'GETVERSION_RESPONSE'],
+    // ['put', 'PUT_RESPONSE', { key: Buffer.from('key1') }],
+    // ['put', 'PUT_RESPONSE', { key: Buffer.from('key2') }],
+    // ['put', 'PUT_RESPONSE', { key: Buffer.from('key3') }],
+    // ['put', 'PUT_RESPONSE', { key: Buffer.from('key4') }],
+    // ['put', 'PUT_RESPONSE', { key: Buffer.from('key5') }],
+    // ['getRange', 'GETKEYRANGE_RESPONSE'],
+    // ['getNext', 'GETNEXT_RESPONSE',
+    //  { key: Buffer.from('key1') }, { key: Buffer.from('key2') }],
+    // ['getPrevious', 'GETPREVIOUS_RESPONSE',
+    //  { key: Buffer.from('key1') }, { key: Buffer.from('key') }],
+    // ['delete', 'DELETE_RESPONSE', { dbVersion: newVersion, }],
+    // ['flush', 'FLUSH_RESPONSE'],
+    // ['getLog', 'GETLOG_RESPONSE'],
+    // ['setClusterVersion', 'SETUP_RESPONSE'],
+    // ['setClusterVersionTo0', 'SETUP_RESPONSE'],
 ];
 
 function requestsLauncher(request, client, optionsA) {
@@ -109,6 +109,9 @@ function requestsLauncher(request, client, optionsA) {
     default:
         break;
     }
+
+
+    console.log(util.inspect(pdu, {showHidden: false, depth: null}));
 
     client.write(pdu.read());
     if (request === 'put') {

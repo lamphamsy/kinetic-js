@@ -36,7 +36,8 @@
     "scripts": {
         "lint": "eslint $(git ls-files './lib/*.js' './tests/*/*.js')",
         "test": "mocha -r babel/register tests/unit",
-        "tests_functional": "make -C tests/functional"
+        "tests_functional": "make -C tests/functional",
+        "start": "node server/startSimulator.js"
     },
     "private": false
 }
